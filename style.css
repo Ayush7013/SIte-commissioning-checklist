@@ -1,0 +1,252 @@
+:root {
+  --bg-page: #0b1120;
+  --bg-card: #111827;
+  --bg-row: #1e293b;
+  --bg-row-hover: #243247;
+  --border-subtle: rgba(148, 163, 184, 0.16);
+  --text-primary: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-primary: #38bdf8;
+  --accent-primary-hover: #0ea5e9;
+  --pass-bg: rgba(34, 197, 94, 0.14);
+  --pass-text: #4ade80;
+  --pass-border: rgba(34, 197, 94, 0.35);
+  --fail-bg: rgba(239, 68, 68, 0.14);
+  --fail-text: #f87171;
+  --fail-border: rgba(239, 68, 68, 0.35);
+  --pending-bg: rgba(245, 158, 11, 0.14);
+  --pending-text: #fbbf24;
+  --pending-border: rgba(245, 158, 11, 0.35);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-page);
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08), transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(34, 197, 94, 0.06), transparent 40%),
+    linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px;
+  line-height: 1.5;
+}
+
+/* Main container framing your existing blocks */
+body > * {
+  width: 100%;
+  max-width: 680px;
+}
+
+/* Summary / Header Counters */
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.header span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  background: var(--bg-row);
+  border: 1px solid var(--border-subtle);
+}
+
+.header span:nth-child(1) {
+  color: var(--pass-text);
+  background: var(--pass-bg);
+  border-color: var(--pass-border);
+}
+
+.header span:nth-child(2) {
+  color: var(--fail-text);
+  background: var(--fail-bg);
+  border-color: var(--fail-border);
+}
+
+.header span:nth-child(3) {
+  color: var(--pending-text);
+  background: var(--pending-bg);
+  border-color: var(--pending-border);
+}
+
+/* Checklist Items Container */
+.names {
+  background: var(--bg-card);
+  border-left: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle);
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-card);
+}
+
+.names > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-row);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--accent-primary);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-size: 0.96rem;
+  font-weight: 500;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.names > div:hover {
+  background: var(--bg-row-hover);
+  transform: translateY(-1px);
+}
+
+/* Push action buttons to the right side of each row */
+.names > div .js-pass-btn {
+  margin-left: auto;
+}
+
+/* Action Buttons */
+button {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.js-pass-btn {
+  background: var(--pass-bg);
+  color: var(--pass-text);
+  border-color: var(--pass-border);
+}
+
+.js-pass-btn:hover {
+  background: rgba(34, 197, 94, 0.24);
+}
+
+.js-fail-btn {
+  background: var(--fail-bg);
+  color: var(--fail-text);
+  border-color: var(--fail-border);
+}
+
+.js-fail-btn:hover {
+  background: rgba(239, 68, 68, 0.24);
+}
+
+/* Add New Check Input */
+.js-new {
+  background: var(--bg-card);
+  border: none;
+  border-left: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-subtle);
+  padding: 16px 20px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-card);
+}
+
+.js-new::placeholder {
+  color: var(--text-muted);
+}
+
+/* Footer Controls Wrapper (the div after .js-new) */
+.js-new + div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--border-subtle);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  padding: 16px 20px 22px;
+  box-shadow: var(--shadow-card);
+}
+
+.js-reset-btn {
+  background: transparent;
+  color: var(--text-muted);
+  border-color: var(--border-subtle);
+}
+
+.js-reset-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-row);
+}
+
+.js-add-btn {
+  background: var(--accent-primary);
+  color: #06101d;
+  border-color: var(--accent-primary);
+}
+
+.js-add-btn:hover {
+  background: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
+}
+
+/* Responsive Tweaks for Mobile */
+@media (max-width: 540px) {
+  .header {
+    grid-template-columns: 1fr;
+  }
+
+  .names > div {
+    flex-wrap: wrap;
+  }
+
+  .names > div .js-pass-btn {
+    margin-left: 0;
+  }
+
+  .js-new + div {
+    flex-direction: column-reverse;
+  }
+
+  .js-new + div button {
+    width: 100%;
+  }
+}
