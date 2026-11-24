@@ -250,3 +250,33 @@ input:focus-visible {
     width: 100%;
   }
 }
+
+.check-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.check-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 600px) {
+  .check-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .check-buttons {
+    width: 100%;
+  }
+
+  .check-buttons button {
+    flex: 1;
+    padding: 10px;
+  }
+}

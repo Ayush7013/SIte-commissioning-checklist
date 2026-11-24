@@ -26,11 +26,14 @@ function render() {
   let wholeHTML = '';
 
   arr.forEach((obj) => {
-    wholeHTML += `<div>${obj.name} - ${obj.status}
+    wholeHTML += `<div class="check-row">
+    <div class="check-name">${obj.name} - ${obj.status}</div>
+    <div class="check-buttons">
       <button class="js-pass-btn" data-check-id="${obj.id}">Pass</button>
       <button class="js-fail-btn" data-check-id="${obj.id}">Fail</button>
       <button class="js-delete-btn" data-check-id="${obj.id}">Delete</button>
-      </div>`;
+    </div>
+  </div>`;
   });
 
   let passedcount = 0;
