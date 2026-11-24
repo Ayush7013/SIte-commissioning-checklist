@@ -46,7 +46,9 @@ function render() {
     }
   });
 
-  document.querySelector('.header').innerHTML = `<span>Passed : ${passedcount}</span>
+  document.querySelector('.header')
+    .innerHTML = 
+    `<span>Passed : ${passedcount}</span>
     <span>Failed : ${failedcount}</span>
     <span>Pending : ${pendingcount}</span>`;
 
@@ -71,6 +73,7 @@ function render() {
   });
 }
 
+// CHANGE STATUS OF CHECK
 function changeStatus(id, newStatus) {
   let matchingObj;
   arr.forEach((obj) => {
@@ -83,6 +86,7 @@ function changeStatus(id, newStatus) {
   render();
 }
 
+// DELETE CHECK
 function deleteCheck(id) {
   const newArr = [];
 
@@ -97,6 +101,8 @@ function deleteCheck(id) {
   render();
 }
 
+
+// RESET BUTTON
 const resetBtn = document.querySelector('.js-reset-btn');
 resetBtn.addEventListener('click', () => {
   arr.forEach((obj) => {
@@ -106,6 +112,8 @@ resetBtn.addEventListener('click', () => {
   render();
 });
 
+
+// ADD new check
 const inputElem = document.querySelector('.js-new');
 const addBtn = document.querySelector('.js-add-btn');
 
